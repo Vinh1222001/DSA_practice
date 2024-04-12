@@ -19,7 +19,7 @@ TARGET = stack
 
 # Rule to compile source files into object files
 %.o: %.cpp $(LIBDIR)/node.h
-	$(CC) $(CFLAGS) -c -I$(LIBDIR) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ -I$(LIBDIR)
 
 # Rule to link object files and library object file into the executable
 $(TARGET): $(OBJS) $(LIBOBJ)

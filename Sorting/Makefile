@@ -5,20 +5,20 @@ CC = g++
 CFLAGS = -Wall 
 
 # Define the location of your library header file
-LIBDIR = include
+LIBDIR = includes
 
 # Define the source and object files
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Define the library object file (assuming node.cpp compiles to node.o)
-LIBOBJ = $(LIBDIR)/Sort_method.o 
+LIBOBJ = $(LIBDIR)/Sort_methods.o 
 
 # Define the target (executable name)
 TARGET = main
 
 # Rule to compile source files into object files
-%.o: %.cpp $(LIBDIR)/Sort_method.h
+%.o: %.cpp $(LIBDIR)/Sort_methods.h
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(LIBDIR)
 
 # Rule to link object files and library object file into the executable
@@ -32,3 +32,9 @@ run:
 # Rule to clean up object files and the executable
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+clean_main.o:
+	rm main.o
+
+clean_Sort_method.o:
+	rm includes/Sort_methods.o

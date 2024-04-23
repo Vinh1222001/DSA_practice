@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../Libs/Node/node.cpp"
+#include "node.cpp"
 
 #pragma region DECLARE STACK
 template<typename T> class stack

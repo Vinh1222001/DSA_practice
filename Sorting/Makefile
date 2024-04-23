@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -Wall 
 
 # Define the location of your library header file
-LIBDIR = includes
+LIBDIR = Sort_methods
 
 # Define the source and object files
 SRCS = main.cpp

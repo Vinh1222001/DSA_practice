@@ -19,6 +19,7 @@ public:
 
     void printSelectionSort();
     void printInsertionSort();
+    void printShellSort();
 
 };
 

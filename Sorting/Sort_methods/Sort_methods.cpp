@@ -47,6 +47,33 @@ void Sort_methods<T>::printInsertionSort(){
 }
 
 template<typename T> 
+void Sort_methods<T>::printShellSort(){
+    int gap = 1, i,j , temp;
+    while(gap >= this->count/3)
+        gap = gap*3+1;
+
+    while (gap > 0)     
+    {
+        for(i = gap; i < this->count ; i++){
+            temp = this->arr[i];
+            j = i;
+            while (this->arr[j-gap] > temp && j > gap - 1)
+            {
+                this->arr[j] = this->arr[j-gap];
+                j-=gap;
+            }
+
+            this->arr[j] = temp;
+            
+        }
+        gap = (gap-1)/3;
+    }
+    
+    this->printArray();
+}
+
+
+template<typename T> 
 void Sort_methods<T>::swap(T* x, T*y){
     T temp = *x;
     *x = *y;

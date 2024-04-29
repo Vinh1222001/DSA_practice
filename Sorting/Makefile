@@ -32,9 +32,3 @@ run:
 # Rule to clean up object files and the executable
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-clean_main.o:
-	rm main.o
-
-clean_Sort_method.o:
-	rm includes/Sort_methods.o

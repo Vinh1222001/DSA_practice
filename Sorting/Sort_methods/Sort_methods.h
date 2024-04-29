@@ -20,6 +20,7 @@ public:
     void printSelectionSort();
     void printInsertionSort();
     void printShellSort();
+    void printBubbleSort();
 
 };
 

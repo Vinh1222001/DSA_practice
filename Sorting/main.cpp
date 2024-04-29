@@ -14,7 +14,7 @@ int main(void){
     Sort_methods<int> sort(arr, count);
 
     // sort.printSelectionSort(arr,count);
-    sort.printShellSort();
+    sort.printBubbleSort();
 
 
     auto stop = high_resolution_clock::now();

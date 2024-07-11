@@ -96,6 +96,94 @@ void Sort_methods<T>::printBubbleSort(){
     this->printArray();
 }
 
+template<typename T>
+int LomutoPartition(T* arr,int left, int right){
+    T pivot = arr[right];
+
+    int i = left -1;
+
+    for (int j = left; j < right; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+        
+    }
+    
+    swap(arr[i+1], arr[right]);
+    
+    return (i+1);
+}
+
+template<typename T>
+int HoarePartition(T* arr,int left, int right){
+
+    T pivot = arr[left];
+
+    int i = left - 1;
+    int j = right + 1;
+
+    while (true)
+    {
+        do
+        {
+            i++;
+        } while (arr[i] < pivot);
+
+        do
+        {
+            j--;
+        } while (arr[j] > pivot);
+        
+        if(i>=j){
+            return j;
+        }
+
+        swap(arr[i],arr[j]);
+
+    }
+
+}
+
+template<typename T> 
+void Sort_methods<T>::QuickSort(int (*partitionFuntion)(T* arr,int left, int right), int left, int right){
+    if(left < right){
+        this->printArray();
+        int pivot_pos = partitionFuntion(this->arr, left, right);
+        this->QuickSort(partitionFuntion, left, pivot_pos-1);
+        this->QuickSort(partitionFuntion, pivot_pos+1, right);
+    }
+}
+
+template<typename T>
+void Sort_methods<T>::printQuickSort(int PartitionFunctionOpt){
+
+    switch (PartitionFunctionOpt)
+    {
+        case QUICK_SORT_LUMUTO_PARTITION:
+            cout << "Quick sort with Lumoto Partition" << endl;
+            this->QuickSort(LomutoPartition, 0, this->count-1);
+            break;
+
+        case QUICK_SORT_HOARE_PARTITION:
+            cout << "Quick sort with Hoare Partition" << endl;
+            this->QuickSort(HoarePartition, 0, this->count-1);
+            break;
+
+        default:
+
+            cerr << "In Sortmethods.cpp -> printQuicksort(int), You entered a wrong Partition function ID, please try:" <<endl;
+            cerr << "\tQUICK_SORT_LUMUTO_PARTITION" << endl;
+            cerr << "\tor" << endl;
+            cerr << "\tQUICK_SORT_HOARE_PARTITION" << endl;
+            break;
+        }
+
+    this->printArray();
+}
+
 template<typename T> 
 void Sort_methods<T>::swap(T* x, T*y){
     T temp = *x;
